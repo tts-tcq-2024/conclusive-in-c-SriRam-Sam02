@@ -1,11 +1,11 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
-BreachType inferBreach(double value, CoolingLimits range) {
-    return (value < range.lowerLimit) ? TOO_LOW : (value > range.upperLimit) ? TOO_HIGH : NORMAL;
+BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
+    return (value < lowerLimit) ? TOO_LOW : (value > upperLimit) ? TOO_HIGH : NORMAL;
 }
 
-CoolingLimits getTemperatureRange(CoolingType coolingType) {
+BreachType getTemperatureRange(CoolingType coolingType) {
   int lowerLimit = 0;
   int upperLimit = 0;
   switch(coolingType) {
@@ -22,13 +22,13 @@ CoolingLimits getTemperatureRange(CoolingType coolingType) {
       upperLimit = 40;
       break;
   };
-
-  return ranges[coolingType];
+    
+ return inferBreach(temperatureInC, lowerLimit, upperLimit);
+    
 }
 
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC) {
   CoolingLimits range = getTemperatureRange(coolingType);
-  return inferBreach(temperatureInC, range);
 }
 
 void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) 
