@@ -1,20 +1,18 @@
 #include <gtest/gtest.h>
 #include "typewise-alert.h"
 
-TEST(TypeWiseAlertTestSuite,InfersBreachAccordingToLow) {
-  CoolingLimits range = {0, 35};  
-  EXPECT_EQ(inferBreach(-1, range), TOO_LOW);
+TEST(TypeWiseAlertTestSuite,InfersBreachAccordingToLow) {  
+  EXPECT_EQ(inferBreach(-1, 0,35), TOO_LOW);
 }
 
 TEST(TypeWiseAlertTestSuite,InfersBreachAccordingToHIGH) {
-  CoolingLimits range = {0, 35}; 
-  EXPECT_EQ(inferBreach(36, range), TOO_HIGH);
+  EXPECT_EQ(inferBreach(36, 0,35), TOO_HIGH);
 }
 
 TEST(TypeWiseAlertTestSuite,InfersBreachAccordingToNormal) {
-  CoolingLimits range = {0, 35};
-  EXPECT_EQ(inferBreach(20, range), NORMAL);
+  EXPECT_EQ(inferBreach(20, 0,35), NORMAL);
 }
+
 TEST(TypewiseAlertTest, ClassifyTemperatureBreachPassiveCooling) {
     EXPECT_EQ(classifyTemperatureBreach(PASSIVE_COOLING, -1), TOO_LOW);
     EXPECT_EQ(classifyTemperatureBreach(PASSIVE_COOLING, 0), NORMAL);
