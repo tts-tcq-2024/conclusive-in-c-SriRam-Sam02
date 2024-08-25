@@ -28,7 +28,7 @@ BreachType getTemperatureRange(CoolingType coolingType) {
 }
 
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC) {
-  CoolingLimits range = getTemperatureRange(coolingType);
+  return getTemperatureRange(coolingType);
 }
 
 void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) 
