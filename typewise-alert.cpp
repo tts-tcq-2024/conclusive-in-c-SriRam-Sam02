@@ -6,10 +6,21 @@ BreachType inferBreach(double value, CoolingLimits range) {
 }
 
 CoolingLimits getTemperatureRange(CoolingType coolingType) {
-    CoolingLimits ranges[] = {
-    {0, 35}, /*PASSIVE_COOLING*/
-    {0, 45}, /*HI_ACTIVE_COOLING*/
-    {0, 40}  /*MED_ACTIVE_COOLING*/
+  int lowerLimit = 0;
+  int upperLimit = 0;
+  switch(coolingType) {
+    case PASSIVE_COOLING:
+      lowerLimit = 0;
+      upperLimit = 35;
+      break;
+    case HI_ACTIVE_COOLING:
+      lowerLimit = 0;
+      upperLimit = 45;
+      break;
+    case MED_ACTIVE_COOLING:
+      lowerLimit = 0;
+      upperLimit = 40;
+      break;
   };
 
   return ranges[coolingType];
