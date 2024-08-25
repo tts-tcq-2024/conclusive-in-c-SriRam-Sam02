@@ -5,9 +5,11 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
     return (value < lowerLimit) ? TOO_LOW : (value > upperLimit) ? TOO_HIGH : NORMAL;
 }
 
-BreachType getTemperatureRange(CoolingType coolingType) {
+BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC) {
+    
   int lowerLimit = 0;
   int upperLimit = 0;
+    
   switch(coolingType) {
     case PASSIVE_COOLING:
       lowerLimit = 0;
@@ -23,12 +25,7 @@ BreachType getTemperatureRange(CoolingType coolingType) {
       break;
   };
     
- return inferBreach(temperatureInC, lowerLimit, upperLimit);
-    
-}
-
-BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC) {
-  return getTemperatureRange(coolingType);
+return inferBreach(temperatureInC, lowerLimit, upperLimit); 
 }
 
 void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) 
