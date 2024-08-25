@@ -11,6 +11,7 @@ CoolingLimits getTemperatureRange(CoolingType coolingType) {
     {0, 45}, /*HI_ACTIVE_COOLING*/
     {0, 40}  /*MED_ACTIVE_COOLING*/
   };
+
   return ranges[coolingType];
 }
 
