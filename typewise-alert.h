@@ -12,14 +12,9 @@ typedef enum {
   TOO_HIGH
 } BreachType;
 
-typedef struct {
-    int lowerLimit;
-    int upperLimit;
-}CoolingLimits;
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC);
-BreachType getTemperatureRange(CoolingType coolingType);
 
 typedef enum {
   TO_CONTROLLER,
